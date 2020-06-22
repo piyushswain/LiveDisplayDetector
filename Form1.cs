@@ -56,19 +56,20 @@ namespace LiveDeviceDector2
         {
             var displays = DisplayDevice.GetDisplayDevices();
             string allDisplays = "";
-            string liveDisplays = "LIVE DISPLAYS:: ";
-            ushort[] runningModes = { 3, 4, 7, 13, 14, 15, 16, 17 };
+            string totalDisplays = $"Total Displays: {displays.Count()}";
+            //string liveDisplays = "LIVE DISPLAYS:: ";
+            //ushort[] runningModes = { 3, 4, 7, 13, 14, 15, 16, 17 };
             foreach (var device in displays)
             {
-                if (runningModes.Contains(device.Availability))
-                {
-                    liveDisplays += $"PNP Device ID: { device.PnpDeviceID}, Availability: { device.Availability} | ";
-                }
-                allDisplays += $"PNP Device ID: {device.PnpDeviceID}, Availability: {device.Availability} | \n";
-                Console.WriteLine("Device ID: {0}, PNP Device ID: {1}, Description: {2}, Name: {3}, MonitorType: {4}, Availability: {5}",
-                    device.DeviceID, device.PnpDeviceID, device.Description, device.Name, device.MonitorType, device.Availability);
+                //if (runningModes.Contains(device.Availability))
+                //{
+                //    liveDisplays += $"PNP Device ID: { device.PnpDeviceID}, Availability: { device.Availability} | ";
+                //}
+                allDisplays += $"Device ID: {device.DeviceID}, Name: {device.Name} | \n";
+                Console.WriteLine("Device ID: {0}, Name: {1}",
+                    device.DeviceID, device.Name);
             }
-            return new string[] { allDisplays, liveDisplays };
+            return new string[] { allDisplays, totalDisplays };
         }
 
         public Form1()
